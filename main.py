@@ -1,10 +1,20 @@
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from config import Config
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from email_service import process_csv_and_send_emails
 from qr_code_service import record_attendance
 import os
+from models import db, User, Attendance
 
 app = Flask(__name__)
-app.config.from_object('config.Config')
+app.config.from_object(Config)
+
+db.init_app(app)
+
+# Manually create tables when the app starts
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 def home():
@@ -26,14 +36,21 @@ def send_emails():
 def attendance():
     try:
         ticket_id = request.json.get('ticket_id')
-        if not ticket_id:
-            return jsonify({"error": "Ticket ID is required"}), 400
+        event_name = request.json.get('event_name')  # Get event name from the request
+        
+        if not ticket_id or not event_name:
+            return jsonify({"error": "Ticket ID and event name are required"}), 400
 
-        attendance_recorded = record_attendance(ticket_id)
-        if attendance_recorded:
-            return jsonify({"message": "Attendance recorded successfully"}), 200
+        user = User.query.filter_by(ticket_id=ticket_id).first()
+        if user:
+            # Create a new attendance record
+            attendance_record = Attendance(user_id=user.id, event_name=event_name)
+            db.session.add(attendance_record)
+            db.session.commit()
+            
+            return jsonify({"message": f"Attendance recorded for {user.name} at {event_name}"}), 200
         else:
-            return jsonify({"error": "Ticket not found or already marked"}), 404
+            return jsonify({"error": "Invalid Ticket ID"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

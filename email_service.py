@@ -9,6 +9,7 @@ from xhtml2pdf import pisa
 from jinja2 import Template
 import pandas as pd
 from datetime import datetime
+from models import db, User
 from qr_code_service import generate_qr_code
 
 def load_template(template_name):
@@ -124,7 +125,14 @@ def process_csv_and_send_emails(csv_file_path, event_details, log_file_path):
             with open(log_file_path, 'a', newline='') as log_file:
                 writer = csv.writer(log_file)
                 writer.writerow([first_name, email, datetime.now().strftime("%Y-%m-%d %H:%M:%S")])
-
+            user = User(
+            name=first_name,
+            email=email,
+            ticket_id=ticket_id,
+            qr_code=qr_code_image
+            )
+            db.session.add(user)
+            db.session.commit()
         except Exception as e:
             print(f"Failed to send email to {email}: {str(e)}")
         finally:

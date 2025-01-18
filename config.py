@@ -7,3 +7,5 @@ class Config:
         'end_date': '23-01-2025',
         'venue': 'Online',
     }
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///event_management.db'  # SQLite database
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
