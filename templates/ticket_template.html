@@ -1,54 +1,69 @@
-<!DOCTYPE html>
-
-<head>
-    <title>Flutter event ticket</title>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols:wght@100..900&family=Pacifico&family=Paytone+One&family=Share+Tech+Mono&family=Tiny5&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <div class="container">
-        <div class="top_half">
-            
-            <img src="/static/assets/gdgc_logo.png" height="100px">
-            <img src="/static/assets/title.png" height="115px">
-            <div class="top_details">
-                <div class="date_time ">
-                    <div class="blue_line">
-                        <p style="font-size: 35px;">JAN 20<small>TH</small></p>
+<!doctype html>
+<html>
+    <head>
+        <title>Flutter Event Ticket</title>
+        <link href="http://localhost:5000/static/style.css" rel="stylesheet" />
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="top_half">
+                <img
+                    src="http://localhost:5000/static/assets/logo.png"
+                    height="100px"
+                />
+                <img
+                    src="http://localhost:5000/static/assets/title.png"
+                    height="115px"
+                />
+                <div class="top_details">
+                    <div class="date_time">
+                        <div class="blue_line">
+                            <p style="font-size: 35px">
+                                JAN 20<small>TH</small>
+                            </p>
+                        </div>
+                        <p style="font-size: 15px; margin-bottom: 1rem">
+                            [ 9:30 AM ]
+                        </p>
                     </div>
-                    <p style="font-size: 15px; margin-bottom: 1rem;">[ 9:30 AM ]</p>
+                    <div class="speaker">
+                        <img
+                            src="http://localhost:5000/static/assets/speaker.png"
+                            width="190px"
+                        />
+                    </div>
                 </div>
-                <div class="speaker">
-                    <img src="./assets/speaker.png" width="190px">
+            </div>
+            <div class="bottom_half">
+                <div class="holder_details">
+                    <div class="ticket_holder">
+                        <p style="font-size: 25px">Issued to</p>
+                        <p id="holder_name">Dhruv Bhatada</p>
+                    </div>
+                    <div class="ticket_number">
+                        <p style="font-size: 25px">Ticket Number</p>
+                        <p id="ticket_num">GOOGA251604932</p>
+                    </div>
+                </div>
+                <div class="qr_code">
+                    <p style="font-size: 35px">JAN 20<small>TH</small></p>
+                    <img
+                        src="http://localhost:5000/static/assets/qrcode.png"
+                        width="250px"
+                    />
+                </div>
+                <div class="venue_details">
+                    <p style="font-size: 35px; margin-bottom: 0.5rem">
+                        Phase 3, 4th Floor
+                    </p>
+                    <div class="blue_line_bottom" style="margin-top: 1rem">
+                        <p style="margin-top: 0.5rem">
+                            Atharva College of Engineering
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="bottom_half">
-            <div class="holder_details">
-                <div class="ticket_holder">
-                    <p style="font-size: 25px;">Issued to</p>
-                    <p id="holder_name">Dhruv Bhatada</p>
-                </div>
-                <div class="ticket_number">
-                    <p style="font-size: 25px;">Ticket Number</p>
-                    <p id="ticket_num">GOOGA251604932</p>
-                </div>
-            </div>
-            <div class="qr_code">
-                <p style="font-size: 35px;">JAN 20<small>TH</small></p>
-                <img src="./assets/qrcode.png" width="250px">
-            </div>
-            <div class="venue_details">
-                <p style="font-size: 35px; margin-bottom: .5rem">Phase 3, 4th Floor</p>
-                <div class="blue_line_bottom" style="margin-top: 1rem;">
-                    <p style="margin-top: .5rem;">Atharva College of Engineering</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
+</html>

@@ -1,16 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Paytone+One&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Press+Start+2P&display=swap");
+
 .container {
     max-width: 600px;
-    font-family: 'Paytone One';
+    font-family: "Paytone One";
     justify-self: center;
     position: absolute;
 }
 
-p{
+p {
     margin: 0;
 }
 
 .container::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 4em;
     height: 4em;
@@ -22,7 +24,7 @@ p{
 }
 
 .container::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 4em;
     height: 4em;
@@ -42,7 +44,7 @@ p{
 }
 
 .top_details {
-    margin-top:2em;
+    margin-top: 2em;
     padding-bottom: 3em;
     display: flex;
     justify-content: space-around;
@@ -74,7 +76,7 @@ p{
 }
 
 .bottom_half {
-    padding-bottom:1em;
+    padding-bottom: 1em;
     line-height: 0.6;
     border-bottom-left-radius: 3em;
     border-bottom-right-radius: 3em;
