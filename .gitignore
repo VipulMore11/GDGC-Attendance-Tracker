@@ -1,0 +1,105 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pkl
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+*.env
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+static/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.coverage
+*.cover
+.hypothesis/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# System files
+*.bak
+*.swp
+*~
+
+# Node modules (if using npm/yarn)
+node_modules/
+
+# Compiled C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+wheels/
+share/python-wheels/
+*.manifest
+*.spec
+
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Ansible files
+*.retry
+
+# Local SQL databases
+*.sqlite3
+*.db
+
+# Cache and logs
+*.log
+*.out
+*.err
+
+# Custom user-uploaded content (if applicable)
+uploads/

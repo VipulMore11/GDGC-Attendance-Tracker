@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .ticket-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #4CAF50;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        .ticket-id {
+            text-align: right;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .qr-code {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .qr-code img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket-container">
+        <div class="ticket-id">
+            Ticket ID: {{ ticket_id }}
+        </div>
+        <div class="header">
+            <h1>Event Ticket</h1>
+        </div>
+        <div class="details">
+            <p><strong>Event:</strong> {{ event_name }}</p>
+            <p><strong>Date:</strong> {{ start_date }} to {{ end_date }}</p>
+            <p><strong>Venue:</strong> {{ venue_name }}</p>
+            <p><strong>Booking Date:</strong> {{ start_date }}</p>
+        </div>
+        <div class="qr-code">
+            <img src="data:image/png;base64,{{ qr_code }}" alt="Ticket QR Code">
+        </div>
+        <div class="footer">
+            <p>Thank you for registering. Please bring this ticket to the event.</p>
+        </div>
+    </div>
+</body>
+</html>

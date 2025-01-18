@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .email-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .email-body {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .email-body h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .email-body p {
+            margin-bottom: 10px;
+        }
+        .event-details {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .event-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .event-details li {
+            margin-bottom: 10px;
+        }
+        .email-footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f4f4f4;
+            color: #666;
+            font-size: 14px;
+        }
+        .email-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h2>Registration Confirmed!</h2>
+        </div>
+        <div class="email-body">
+            <h1>Welcome, {{ first_name }}!</h1>
+            <p>We're excited to confirm your registration for the event <strong>{{ event_name }}</strong>. Here are the event details:</p>
+            <div class="event-details">
+                <ul>
+                    <li><strong>Start Date:</strong> {{ start_date }}</li>
+                    <li><strong>End Date:</strong> {{ end_date }}</li>
+                    <li><strong>Venue:</strong> {{ venue_name }}</li>
+                </ul>
+            </div>
+            <p>We look forward to seeing you there. If you have any questions, feel free to <a href="mailto:support@example.com">contact us</a>.</p>
+        </div>
+        <div class="email-footer">
+            <p>Thank you for registering!<br> 
+            <a href="https://example.com">Visit our website</a></p>
+        </div>
+    </div>
+</body>
+</html>
