@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">QR Code Scanner</h1>
+
+        <!-- Button to start QR scanning -->
+        <div class="text-center mb-3">
+            <button id="start-scan-btn" class="btn btn-primary">Start QR Scanning</button>
+        </div>
+
+        <!-- QR Scanner Area -->
+        <div id="qr-reader" style="width: 100%; display: none;"></div>
+
+        <!-- Modal Container -->
+        <div id="modal-container"></div>
+    </div>
+
+    <script>
+        let qrReader; // Global variable to manage QR scanner instance
+
+        // Function to initialize and start the QR scanner
+        function startScanner() {
+            const qrReaderElement = document.getElementById("qr-reader");
+            qrReaderElement.style.display = "block"; // Show QR scanner area
+
+            qrReader = new Html5Qrcode("qr-reader");
+            const config = { fps: 10, qrbox: 250 };
+
+            qrReader.start(
+                { facingMode: "environment" },
+                config,
+                onScanSuccess
+            ).catch(err => {
+                console.error(err);
+                handleError(err);
+            });
+
+            // Disable the button to prevent multiple starts
+            document.getElementById("start-scan-btn").disabled = true;
+        }
+
+        // Success callback for QR scanner
+        function onScanSuccess(decodedText) {
+            const [ticket_id, event_name] = decodedText.split('|');
+            if (!ticket_id || !event_name) {
+                showModal("Invalid QR Code", "danger");
+                return;
+            }
+
+            // Send data to record-attendance endpoint
+            fetch('/record-attendance', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ticket_id, event_name })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    showModal(data.message, "success");
+                } else {
+                    showModal(data.error || "Error occurred", "danger");
+                }
+            })
+            .catch(err => {
+                showModal("Error: " + err.message, "danger");
+            });
+        }
+
+        // Function to handle camera errors
+        function handleError(err) {
+            let errorMessage;
+            switch (err.name) {
+                case 'NotAllowedError':
+                case 'PermissionDeniedError':
+                    errorMessage = "Camera access is blocked. Please allow camera permissions.";
+                    break;
+                case 'NotFoundError':
+                    errorMessage = "No camera found on this device.";
+                    break;
+                default:
+                    errorMessage = "Error starting the QR scanner: " + err.message;
+            }
+            showModal(errorMessage, "danger");
+        }
+
+        // Function to display a modal
+        function showModal(message, type) {
+            const modalHtml = `
+                <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.5);">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-${type} text-white">
+                                <h5 class="modal-title">${type === "success" ? "Success" : "Error"}</h5>
+                                <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>${message}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-${type}" onclick="closeModal()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById("modal-container").innerHTML = modalHtml;
+        }
+
+        function closeModal() {
+            document.getElementById("modal-container").innerHTML = "";
+        }
+
+        // Attach event listener to the "Start QR Scanning" button
+        document.getElementById("start-scan-btn").addEventListener("click", startScanner);
+    </script>
+</body>
+</html>

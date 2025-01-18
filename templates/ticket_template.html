@@ -1,80 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
+    <title>Flutter event ticket</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Ticket</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .ticket-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-        }
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
-        }
-        .header h1 {
-            margin: 0;
-            color: #4CAF50;
-        }
-        .details {
-            margin-top: 20px;
-        }
-        .details p {
-            margin: 5px 0;
-        }
-        .footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 12px;
-            color: #777;
-        }
-        .ticket-id {
-            text-align: right;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .qr-code {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .qr-code img {
-            max-width: 200px;
-            height: auto;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols:wght@100..900&family=Pacifico&family=Paytone+One&family=Share+Tech+Mono&family=Tiny5&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <div class="ticket-container">
-        <div class="ticket-id">
-            Ticket ID: {{ ticket_id }}
+    <div class="container">
+        <div class="top_half">
+            
+            <img src="/static/assets/gdgc_logo.png" height="100px">
+            <img src="/static/assets/title.png" height="115px">
+            <div class="top_details">
+                <div class="date_time ">
+                    <div class="blue_line">
+                        <p style="font-size: 35px;">JAN 20<small>TH</small></p>
+                    </div>
+                    <p style="font-size: 15px; margin-bottom: 1rem;">[ 9:30 AM ]</p>
+                </div>
+                <div class="speaker">
+                    <img src="./assets/speaker.png" width="190px">
+                </div>
+            </div>
         </div>
-        <div class="header">
-            <h1>Event Ticket</h1>
-        </div>
-        <div class="details">
-            <p><strong>Event:</strong> {{ event_name }}</p>
-            <p><strong>Date:</strong> {{ start_date }} to {{ end_date }}</p>
-            <p><strong>Venue:</strong> {{ venue_name }}</p>
-            <p><strong>Booking Date:</strong> {{ start_date }}</p>
-        </div>
-        <div class="qr-code">
-            <img src="data:image/png;base64,{{ qr_code }}" alt="Ticket QR Code">
-        </div>
-        <div class="footer">
-            <p>Thank you for registering. Please bring this ticket to the event.</p>
+        <div class="bottom_half">
+            <div class="holder_details">
+                <div class="ticket_holder">
+                    <p style="font-size: 25px;">Issued to</p>
+                    <p id="holder_name">Dhruv Bhatada</p>
+                </div>
+                <div class="ticket_number">
+                    <p style="font-size: 25px;">Ticket Number</p>
+                    <p id="ticket_num">GOOGA251604932</p>
+                </div>
+            </div>
+            <div class="qr_code">
+                <p style="font-size: 35px;">JAN 20<small>TH</small></p>
+                <img src="./assets/qrcode.png" width="250px">
+            </div>
+            <div class="venue_details">
+                <p style="font-size: 35px; margin-bottom: .5rem">Phase 3, 4th Floor</p>
+                <div class="blue_line_bottom" style="margin-top: 1rem;">
+                    <p style="margin-top: .5rem;">Atharva College of Engineering</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
-</html>

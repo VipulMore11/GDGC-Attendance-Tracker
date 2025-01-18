@@ -1,0 +1,111 @@
+.container {
+    max-width: 600px;
+    font-family: 'Paytone One';
+    justify-self: center;
+    position: absolute;
+}
+
+p{
+    margin: 0;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    background: white;
+    border-radius: 50%;
+    top: 26.5em;
+    background-clip: content-box;
+    transform: translateX(-2em);
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    background: white;
+    border-radius: 50%;
+    top: 26.5em;
+    background-clip: content-box;
+    transform: translateX(35.5em);
+}
+
+.top_half {
+    border-top-left-radius: 3em;
+    border-top-right-radius: 3em;
+    padding-top: 3em;
+    text-align: center;
+    background-color: #000000;
+}
+
+.top_details {
+    margin-top:2em;
+    padding-bottom: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.date_time {
+    text-align: left;
+    line-height: 0.6;
+    font-size: 1.3em;
+    color: #fefeff;
+}
+
+.blue_line {
+    border-bottom: 1px solid #9ec1cc;
+    margin-bottom: 0.5rem;
+}
+
+.blue_line_bottom {
+    text-align: center;
+    margin: auto;
+    margin-top: 1.2rem;
+    border-top: 3px solid #aed2dd;
+    width: 50%;
+}
+
+.speaker {
+    display: flex;
+    align-items: end;
+}
+
+.bottom_half {
+    padding-bottom:1em;
+    line-height: 0.6;
+    border-bottom-left-radius: 3em;
+    border-bottom-right-radius: 3em;
+    background-color: #f6f7f6;
+}
+
+.holder_details {
+    padding: 2em 0em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ticket_holder {
+    text-align: left;
+}
+
+.ticket_number {
+    text-align: right;
+}
+
+.qr_code {
+    text-align: center;
+    line-height: 0.5;
+}
+
+.venue_details {
+    text-align: center;
+    padding-bottom: 1.5em;
+}
+
+p {
+    margin-bottom: 0.5rem;
+}

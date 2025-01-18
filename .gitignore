@@ -21,7 +21,7 @@ media/
 
 # Static files
 staticfiles/
-static/
+# static/
 
 # Virtual environments
 venv/
@@ -29,6 +29,7 @@ env/
 ENV/
 .venv/
 .ENV/
+myenv/
 
 # Installer logs
 pip-log.txt

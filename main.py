@@ -7,7 +7,7 @@ from qr_code_service import record_attendance
 import os
 from models import db, User, Attendance
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.config.from_object(Config)
 
 db.init_app(app)
@@ -53,6 +53,10 @@ def attendance():
             return jsonify({"error": "Invalid Ticket ID"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/qr-scanner')
+def qr_scanner():
+    return render_template('qr_scanner.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
